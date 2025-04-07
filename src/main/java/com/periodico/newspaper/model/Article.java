@@ -1,6 +1,8 @@
 package com.periodico.newspaper.model;
 
-// import java.sql.Date;
+import java.security.Timestamp;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,6 +20,9 @@ public class Article {
     private String title;
     private String content;
     private String date;
+
+    @CreationTimestamp
+    private Timestamp createdOn;
 
     public Article() {}
 
