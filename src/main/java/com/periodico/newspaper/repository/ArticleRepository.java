@@ -1,6 +1,7 @@
 package com.periodico.newspaper.repository;
 
-public interface ArticleRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
 
-  
-}
+import com.periodico.newspaper.model.Article;
+
+public interface ArticleRepository extends JpaRepository<Article, Integer>{}
