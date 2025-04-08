@@ -18,9 +18,5 @@ public class ArticleService {
     public ResponseEntity<Object> createArticle(Article article){
         articleRepository.save(article);
         return new ResponseEntity<>(article, HttpStatus.CREATED);
-
     }
-
 }
-  
-
