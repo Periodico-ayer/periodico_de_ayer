@@ -1,6 +1,6 @@
 package com.periodico.newspaper.model;
 
-import java.security.Timestamp;
+import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -11,7 +11,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "article")
+@Table(name = "articles")
 public class Article {
   
     @Id
@@ -19,10 +19,9 @@ public class Article {
     private int id;
     private String title;
     private String content;
-    private String date;
-
+    // private String date;
     @CreationTimestamp
-    private Timestamp createdOn;
+    private LocalDateTime created_on;
 
     public Article() {}
 
@@ -50,12 +49,12 @@ public class Article {
         this.content = content;
     }
 
-    public String getDate() {
-        return this.date;
+    public LocalDateTime getDate() {
+        return this.created_on;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setDate(LocalDateTime createdOn) {
+        this.created_on = createdOn;
     }    
 
 }
