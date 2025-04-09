@@ -1,9 +1,16 @@
 package com.periodico.newspaper.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,8 +22,8 @@ public class Category {
   private int id;
   private String category;
 
-  public Category(){}
-
+  public Category() {
+  }
 
   public int getId() {
     return this.id;
@@ -34,5 +41,8 @@ public class Category {
     this.category = category;
   }
 
+  @OneToMany(mappedBy = "article", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @JoinColumn(name = "category_id")
+  private Set<Category> categories = new HashSet<>();
 
-  }
+}

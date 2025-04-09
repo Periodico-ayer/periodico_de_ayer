@@ -16,7 +16,7 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "articles")
 public class Article {
-  
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -26,7 +26,8 @@ public class Article {
     @CreationTimestamp
     private LocalDateTime created_on;
 
-    public Article() {}
+    public Article() {
+    }
 
     public int getId() {
         return this.id;
@@ -58,14 +59,13 @@ public class Article {
 
     public void setDate(LocalDateTime createdOn) {
         this.created_on = createdOn;
-    }    
+    }
 
-    @ManyToOne(
-        targetEntity = User.class,
-        optional = false,
-        fetch = FetchType.EAGER
-    )
-    @JoinColumn(name="user_id")
+    @ManyToOne(targetEntity = User.class, optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
     private User user;
 
+    @ManyToOne(targetEntity = Category.class, optional = false, fetch = FetchType.EAGER)
+    @JoinColumn(name = "category_id")
+    private Category category;
 }
