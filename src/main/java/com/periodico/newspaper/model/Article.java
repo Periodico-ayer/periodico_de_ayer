@@ -65,7 +65,7 @@ public class Article {
         optional = false,
         fetch = FetchType.EAGER
     )
-    @JoinColumn(name="id")
+    @JoinColumn(name="user_id")
     private User user;
 
 }
