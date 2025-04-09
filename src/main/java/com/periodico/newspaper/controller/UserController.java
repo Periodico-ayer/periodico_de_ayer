@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.periodico.newspaper.model.User;
+import com.periodico.newspaper.service.UserService;
 
 import jakarta.validation.Valid;
 
