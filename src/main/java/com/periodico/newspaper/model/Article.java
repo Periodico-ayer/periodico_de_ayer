@@ -1,6 +1,7 @@
 package com.periodico.newspaper.model;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -18,8 +19,10 @@ import jakarta.persistence.Table;
 public class Article {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    // @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private UUID uuid;
+
     private String title;
     private String content;
     // private String date;
@@ -29,14 +32,15 @@ public class Article {
     public Article() {
     }
 
-    public int getId() {
-        return this.id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    /*
+     * public int getId() {
+     * return this.id;
+     * }
+     * 
+     * public void setId(int id) {
+     * this.id = id;
+     * }
+     */
     public String getTitle() {
         return this.title;
     }
@@ -61,11 +65,51 @@ public class Article {
         this.created_on = createdOn;
     }
 
-    @ManyToOne(targetEntity = User.class, optional = false, fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id")
+    public UUID getUuid() {
+        return this.uuid;
+    }
+
+    public void setUuid(UUID uuid) {
+        this.uuid = uuid;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+//    public Category getCategory() {
+//        return this.category;
+//    }
+
+//    public void setCategory(Category category) {
+//        this.category = category;
+//    }
+
+    @ManyToOne /* (targetEntity = User.class, optional = false, fetch = FetchType.EAGER) */
+    @JoinColumn(name = "user_uuid")
     private User user;
 
-    @ManyToOne(targetEntity = Category.class, optional = false, fetch = FetchType.EAGER)
-    @JoinColumn(name = "category_id")
-    private Category category;
+   /* @ManyToOne /* (targetEntity = Category.class, optional = false, fetch = FetchType.EAGER) */
+   /*  @JoinColumn(name = "category_uuid")
+    private Category category;  */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (o == null || getClass() != o.getClass())
+            return false;
+        Article article = (Article) o;
+        return uuid.equals(article.uuid);
+    }
+
+    @Override
+    public int hashCode() {
+        return uuid.hashCode();
+
+    }
 }
