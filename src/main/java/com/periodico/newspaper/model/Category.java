@@ -52,24 +52,24 @@ public class Category {
     )
   private Set<Category> categories = new HashSet<>();*/
 
-  @OneToMany(
+  /*@OneToMany(
     mappedBy = "category", 
     cascade = CascadeType.ALL, 
     fetch = FetchType.EAGER
-)
-private Set<Article> articles = new HashSet<>();
+  )
+  private Set<Article> articles = new HashSet<>();*/
 
-@Override
-public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    Category category = (Category) o;
-    return uuid.equals(category.uuid);
-}
+  @Override
+  public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      Category category = (Category) o;
+      return uuid.equals(category.uuid);
+  }
 
-@Override
-public int hashCode() {
-    return uuid.hashCode();
-}
+  @Override
+  public int hashCode() {
+      return uuid.hashCode();
+  }
 
 }

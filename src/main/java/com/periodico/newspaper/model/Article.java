@@ -93,8 +93,8 @@ public class Article {
     @JoinColumn(name = "user_uuid")
     private User user;
 
-   /* @ManyToOne /* (targetEntity = Category.class, optional = false, fetch = FetchType.EAGER) */
-   /*  @JoinColumn(name = "category_uuid")
+    /* @ManyToOne /* (targetEntity = Category.class, optional = false, fetch = FetchType.EAGER) */
+    /*  @JoinColumn(name = "category_uuid")
     private Category category;  */
 
     @Override
@@ -110,6 +110,5 @@ public class Article {
     @Override
     public int hashCode() {
         return uuid.hashCode();
-
     }
 }
