@@ -20,9 +20,7 @@ import jakarta.persistence.Table;
 public class Article {
 
     @Id
-    // @GeneratedValue(strategy = GenerationType.AUTO)
-    // @GeneratedValue(strategy = GenerationType.UUID)
-    // private UUID uuid;
+
     @SequenceGenerator(
         name="user_id_sequence",
         sequenceName = "user_id_sequence",
@@ -77,15 +75,7 @@ public class Article {
         this.created_on = createdOn;
     }
 
-    // public UUID getId() {
-    //     return this.uuid;
-    // }
-
-    // public void setUuid(UUID uuid) {
-    //     this.uuid = uuid;
-    // }
-
-    public User getUser() {
+       public User getUser() {
         return this.user;
     }
 
@@ -93,21 +83,20 @@ public class Article {
         this.user = user;
     }
 
-//    public Category getCategory() {
-//        return this.category;
-//    }
+ public Category getCategory() {
+       return this.category;
+   }
+  public void setCategory(Category category) {
+        this.category = category;
+  }
 
-//    public void setCategory(Category category) {
-//        this.category = category;
-//    }
-
-    @ManyToOne /* (targetEntity = User.class, optional = false, fetch = FetchType.EAGER) */
+    @ManyToOne 
     @JoinColumn(name = "user_id")
     private User user;
 
-    /* @ManyToOne /* (targetEntity = Category.class, optional = false, fetch = FetchType.EAGER) */
-    /*  @JoinColumn(name = "category_uuid")
-    private Category category;  */
+     @ManyToOne 
+     @JoinColumn(name = "category_id")
+    private Category category;  
 
     @Override
     public boolean equals(Object o) {
@@ -119,8 +108,8 @@ public class Article {
         return id.equals(article.id);
     }
 
-    // @Override
-    // public int hashCode() {
-    //     return id.hashCode();
-    // }
+     @Override
+     public int hashCode() {
+         return id.hashCode();
+     }
 }

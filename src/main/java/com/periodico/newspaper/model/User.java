@@ -1,9 +1,7 @@
 package com.periodico.newspaper.model;
 
-// import java.util.HashSet;
 import java.util.List;
-// import java.util.Set;
-// import java.util.UUID;
+
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -20,9 +18,7 @@ import jakarta.persistence.Table;
 @Table( name = "users")
 public class User {
     @Id
-    //@GeneratedValue(strategy = GenerationType.AUTO)
-    // @GeneratedValue(strategy = GenerationType.UUID)
-    // private UUID uuid;
+
     @SequenceGenerator(
         name="user_id_sequence",
         sequenceName = "user_id_sequence",
@@ -35,7 +31,6 @@ public class User {
     )
 
     private Integer id;
-    //private int id;
     @Column
     private String name;
     @Column
@@ -82,7 +77,6 @@ public class User {
         cascade = CascadeType.ALL,
         fetch = FetchType.EAGER
     )
-    //private Set<Article> articles = new HashSet<>();
     private List<Article> articles;
 
     @Override
@@ -92,15 +86,7 @@ public class User {
         User user = (User) o;
         return id.equals(user.id);
     }
-}
 
-//     @Override
-//     public int hashCode() {
-//         return uuid.hashCode();
-//     }
 
-//     public UUID getUuid() {
-//         return uuid;
-//     }
-// }
+ }
 

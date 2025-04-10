@@ -1,16 +1,16 @@
 package com.periodico.newspaper.model;
 
-// import java.util.HashSet;
-// import java.util.Set;
-import java.util.UUID;
+import java.util.List;
 
-// import jakarta.persistence.CascadeType;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-// import jakarta.persistence.FetchType;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-// import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
@@ -18,24 +18,31 @@ import jakarta.persistence.Table;
 public class Category {
 
   @Id
-  //@GeneratedValue(strategy = GenerationType.AUTO)
-  @GeneratedValue(strategy = GenerationType.UUID)
-  private UUID uuid;
 
+@SequenceGenerator(
+  name = "category_id_sequence",
+  sequenceName = "category_id_sequence",
+  allocationSize = 1,
+  initialValue = 1
+)
+@GeneratedValue(
+  strategy = GenerationType.SEQUENCE,
+  generator = "category_id"
+)
 
-  //private int id;
+  private Integer id;
   private String category;
 
   public Category() {
   }
 
-  /*public int getId() {
+  public Integer getId() {
     return this.id;
   }
 
-  public void setId(int id) {
+  public void setId(Integer id) {
     this.id = id;
-  }*/
+  }
 
   public String getCategory() {
     return this.category;
@@ -45,31 +52,23 @@ public class Category {
     this.category = category;
   }
 
-  /*@OneToMany(
+
+
+  @OneToMany(
     mappedBy = "category", 
     cascade = CascadeType.ALL, 
     fetch = FetchType.EAGER
     )
-  private Set<Category> categories = new HashSet<>();*/
-
-  /*@OneToMany(
-    mappedBy = "category", 
-    cascade = CascadeType.ALL, 
-    fetch = FetchType.EAGER
-  )
-  private Set<Article> articles = new HashSet<>();*/
+   private List<Article> articles;
+   
 
   @Override
   public boolean equals(Object o) {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
       Category category = (Category) o;
-      return uuid.equals(category.uuid);
+      return id.equals(category.id);
   }
 
-  @Override
-  public int hashCode() {
-      return uuid.hashCode();
-  }
 
 }
