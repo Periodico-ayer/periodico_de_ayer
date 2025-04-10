@@ -1,9 +1,9 @@
 package com.periodico.newspaper.model;
 
-import java.util.HashSet;
+// import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+// import java.util.Set;
+// import java.util.UUID;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -13,6 +13,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,9 +21,20 @@ import jakarta.persistence.Table;
 public class User {
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO)
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID uuid;
+    // @GeneratedValue(strategy = GenerationType.UUID)
+    // private UUID uuid;
+    @SequenceGenerator(
+        name="user_id_sequence",
+        sequenceName = "user_id_sequence",
+        allocationSize = 1,
+        initialValue = 1
+    )
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "user_id_sequence"
+    )
 
+    private Integer id;
     //private int id;
     @Column
     private String name;
@@ -33,13 +45,13 @@ public class User {
 
         public User(){}
 
-    // public int getId() {
-    //     return this.id;
-    // }
+    public Integer getId() {
+        return this.id;
+    }
 
-    // public void setId(int id) {
-    //     this.id = id;
-    // }
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getName() {
         return this.name;
@@ -78,16 +90,17 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return uuid.equals(user.uuid);
-    }
-
-    @Override
-    public int hashCode() {
-        return uuid.hashCode();
-    }
-
-    public UUID getUuid() {
-        return uuid;
+        return id.equals(user.id);
     }
 }
+
+//     @Override
+//     public int hashCode() {
+//         return uuid.hashCode();
+//     }
+
+//     public UUID getUuid() {
+//         return uuid;
+//     }
+// }
 

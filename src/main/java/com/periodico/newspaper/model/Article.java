@@ -1,17 +1,18 @@
 package com.periodico.newspaper.model;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
+// import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
+// import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 @Entity
@@ -20,9 +21,20 @@ public class Article {
 
     @Id
     // @GeneratedValue(strategy = GenerationType.AUTO)
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID uuid;
+    // @GeneratedValue(strategy = GenerationType.UUID)
+    // private UUID uuid;
+    @SequenceGenerator(
+        name="user_id_sequence",
+        sequenceName = "user_id_sequence",
+        allocationSize = 1,
+        initialValue = 1
+    )
+    @GeneratedValue(
+        strategy = GenerationType.SEQUENCE,
+        generator = "user_id_sequence"
+    )
 
+    private Integer id;
     private String title;
     private String content;
     // private String date;
@@ -32,15 +44,15 @@ public class Article {
     public Article() {
     }
 
-    /*
-     * public int getId() {
-     * return this.id;
-     * }
-     * 
-     * public void setId(int id) {
-     * this.id = id;
-     * }
-     */
+    
+     public Integer getId() {
+     return this.id;
+     }
+     
+     public void setId(Integer id) {
+     this.id = id;
+     }
+     
     public String getTitle() {
         return this.title;
     }
@@ -65,13 +77,13 @@ public class Article {
         this.created_on = createdOn;
     }
 
-    public UUID getUuid() {
-        return this.uuid;
-    }
+    // public UUID getId() {
+    //     return this.uuid;
+    // }
 
-    public void setUuid(UUID uuid) {
-        this.uuid = uuid;
-    }
+    // public void setUuid(UUID uuid) {
+    //     this.uuid = uuid;
+    // }
 
     public User getUser() {
         return this.user;
@@ -90,7 +102,7 @@ public class Article {
 //    }
 
     @ManyToOne /* (targetEntity = User.class, optional = false, fetch = FetchType.EAGER) */
-    @JoinColumn(name = "user_uuid")
+    @JoinColumn(name = "user_id")
     private User user;
 
     /* @ManyToOne /* (targetEntity = Category.class, optional = false, fetch = FetchType.EAGER) */
@@ -104,11 +116,11 @@ public class Article {
         if (o == null || getClass() != o.getClass())
             return false;
         Article article = (Article) o;
-        return uuid.equals(article.uuid);
+        return id.equals(article.id);
     }
 
-    @Override
-    public int hashCode() {
-        return uuid.hashCode();
-    }
+    // @Override
+    // public int hashCode() {
+    //     return id.hashCode();
+    // }
 }
