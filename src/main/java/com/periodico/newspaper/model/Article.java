@@ -81,21 +81,21 @@ public class Article {
         this.user = user;
     }
 
-//    public Category getCategory() {
-//        return this.category;
-//    }
+  public Category getCategory() {
+     return this.category;
+    }
 
-//    public void setCategory(Category category) {
-//        this.category = category;
-//    }
+   public void setCategory(Category category) {
+       this.category = category;
+   }
 
-    @ManyToOne /* (targetEntity = User.class, optional = false, fetch = FetchType.EAGER) */
+    @ManyToOne  (targetEntity = User.class, optional = false, fetch = FetchType.EAGER) 
     @JoinColumn(name = "user_uuid")
     private User user;
 
-    /* @ManyToOne /* (targetEntity = Category.class, optional = false, fetch = FetchType.EAGER) */
-    /*  @JoinColumn(name = "category_uuid")
-    private Category category;  */
+    @ManyToOne  (targetEntity = Category.class, optional = false, fetch = FetchType.EAGER) 
+     @JoinColumn(name = "category_uuid")
+    private Category category; 
 
     @Override
     public boolean equals(Object o) {

@@ -45,19 +45,29 @@ public class Category {
     this.category = category;
   }
 
-  /*@OneToMany(
+
+  public UUID getUuid() {
+    return this.uuid;
+  }
+
+  public void setUuid(UUID uuid) {
+    this.uuid = uuid;
+  }
+
+
+  @OneToMany(
     mappedBy = "category", 
     cascade = CascadeType.ALL, 
     fetch = FetchType.EAGER
     )
-  private Set<Category> categories = new HashSet<>();*/
+  private Set<Category> categories = new HashSet<>();
 
-  /*@OneToMany(
+  @OneToMany(
     mappedBy = "category", 
     cascade = CascadeType.ALL, 
     fetch = FetchType.EAGER
   )
-  private Set<Article> articles = new HashSet<>();*/
+  private Set<Article> articles = new HashSet<>();
 
   @Override
   public boolean equals(Object o) {
