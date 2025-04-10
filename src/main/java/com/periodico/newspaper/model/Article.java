@@ -1,12 +1,10 @@
 package com.periodico.newspaper.model;
 
 import java.time.LocalDateTime;
-// import java.util.UUID;
 
 import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.Entity;
-// import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
