@@ -17,9 +17,9 @@ this.articleRepository = articleRepository;
 }
 
 public ResponseEntity<Object> createArticle(Article article){
-articleRepository.save(article);
-return new ResponseEntity<>(article, HttpStatus.CREATED);
-
+return new ResponseEntity<>(articleRepository.save(article), HttpStatus.CREATED);
 }
+
+
 
 }
