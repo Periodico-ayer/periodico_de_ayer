@@ -5,6 +5,8 @@ import com.periodico.newspaper.model.Article;
 import com.periodico.newspaper.service.ArticleService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,5 +25,10 @@ public class ArticleController {
     @PostMapping
     public ResponseEntity<Object> createArticle(@Valid @RequestBody Article article) {
         return articleService.createArticle(article);
+    }
+
+    @DeleteMapping
+    public ResponseEntity<Object> deleteArticle(@PathVariable Integer id ){
+        return this.articleService.deleteArticle(id);
     }
 }

@@ -1,5 +1,7 @@
 package com.periodico.newspaper.service;
 
+import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -21,5 +23,17 @@ articleRepository.save(article);
 return new ResponseEntity<>(article, HttpStatus.CREATED);
 
 }
+
+public ResponseEntity<Object> deleteArticle(Integer id) {
+    Optional<Article> articleOptional = articleRepository.findById(id);
+
+    if(!articleOptional.isPresent()) {
+        return ResponseEntity.notFound().build();
+    }
+
+    articleRepository.deleteById(id);
+    return ResponseEntity.ok().build();
+}
+
 
 }
