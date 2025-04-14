@@ -20,7 +20,7 @@ public class ArticleController {
 
     }
 
-    @PostMapping("/users/{id}") 
+    @PostMapping
     public ResponseEntity<Object> createArticle(@Valid @RequestBody Article article) {
         return articleService.createArticle(article);
     }
