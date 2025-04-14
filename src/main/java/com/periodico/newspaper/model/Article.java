@@ -36,6 +36,12 @@ public class Article {
     // private String date;
     @CreationTimestamp
     private LocalDateTime created_on;
+    @ManyToOne 
+    @JoinColumn(name = "user_id")
+    private User user;
+    @ManyToOne 
+    @JoinColumn(name = "category_id")
+    private Category category;  
 
     public Article() {
     }
@@ -88,13 +94,7 @@ public class Article {
         this.category = category;
   }
 
-    @ManyToOne 
-    @JoinColumn(name = "user_id")
-    private User user;
 
-     @ManyToOne 
-     @JoinColumn(name = "category_id")
-    private Category category;  
 
     @Override
     public boolean equals(Object o) {
