@@ -42,4 +42,18 @@ return ResponseEntity.ok(article);
 
 }
 
+public ResponseEntity<Object> updateArticle(Integer id, Article updateArticle) {
+  Optional<Article> articleOptional = articleRepository.findById(id);
+
+  if (!articleOptional.isPresent()) {
+      return ResponseEntity.notFound().build();
+  }
+  Article existingArticle = articleOptional.get();
+
+  existingArticle.setTitle(updateArticle.getTitle());
+  existingArticle.setContent(updateArticle.getContent());
+  articleRepository.save(existingArticle);
+  return ResponseEntity.ok(existingArticle);
+}
+
 }
