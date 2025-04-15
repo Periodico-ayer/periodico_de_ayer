@@ -3,6 +3,7 @@ package com.periodico.newspaper.model;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,9 +37,16 @@ public class Article {
     // private String date;
     @CreationTimestamp
     private LocalDateTime created_on;
+
+    @UpdateTimestamp
+    private LocalDateTime updated_on;
+   
+ 
+    
     @ManyToOne 
     @JoinColumn(name = "user_id")
     private User user;
+
     @ManyToOne 
     @JoinColumn(name = "category_id")
     private Category category;  
@@ -79,7 +87,15 @@ public class Article {
         this.created_on = createdOn;
     }
 
-       public User getUser() {
+    public LocalDateTime getUpdatedOn() {
+        return this.updated_on;
+    }
+
+    public void setUpdatedOn(LocalDateTime updatedOn) {
+        this.updated_on = updatedOn;
+    }
+
+    public User getUser() {
         return this.user;
     }
 
@@ -106,8 +122,8 @@ public class Article {
         return id.equals(article.id);
     }
 
-     @Override
+/*      @Override
      public int hashCode() {
          return id.hashCode();
-     }
+     } */
 }
