@@ -24,16 +24,13 @@ return new ResponseEntity<>(article, HttpStatus.CREATED);
 
 }
 
-public ResponseEntity<Object> deleteArticle(Integer id) {
-    Optional<Article> articleOptional = articleRepository.findById(id);
-
-    if(!articleOptional.isPresent()) {
-        return ResponseEntity.notFound().build();
+public void deleteArticle(int id) {
+    if (!articleRepository.existsById(id)) {
+        throw new RuntimeException("No se encontró el artículo con ID: " + id);
     }
-
     articleRepository.deleteById(id);
-    return ResponseEntity.ok().build();
 }
+
 
 
 }

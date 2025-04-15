@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.periodico.newspaper.model.Article;
 import com.periodico.newspaper.service.ArticleService;
 import jakarta.validation.Valid;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,8 +29,13 @@ public class ArticleController {
         return articleService.createArticle(article);
     }
 
-    @DeleteMapping
-    public ResponseEntity<Object> deleteArticle(@PathVariable Integer id ){
-        return this.articleService.deleteArticle(id);
+@DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteArticle(@PathVariable int id) {
+        try {
+            articleService.deleteArticle(id);
+            return ResponseEntity.ok("Artículo eliminado correctamente");
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 }
