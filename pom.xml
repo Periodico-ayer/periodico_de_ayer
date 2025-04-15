@@ -71,7 +71,13 @@
 			<artifactId>spring-boot-starter-validation</artifactId> 
 		</dependency>
 
-	</dependencies>
+	
+   <dependency>
+     <groupId>co.topl</groupId>
+     <artifactId>akka-http-rpc_2.13</artifactId>
+     <version>1.9.5</version>
+   </dependency>
+ </dependencies>
 
 	<build>
 		<plugins>

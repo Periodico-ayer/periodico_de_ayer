@@ -36,5 +36,5 @@ public class UserController {
     return userService.createUser(user);
   }
   
-
 }
+
