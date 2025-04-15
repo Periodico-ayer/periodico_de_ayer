@@ -1,7 +1,6 @@
 package com.periodico.newspaper.controller;
 
 import org.springframework.http.ResponseEntity;
-// import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,15 +20,6 @@ public class UserController {
     this.userService = userService;
 
   }
-
-  // @PostMapping
-  // public ResponseEntity<Object> createUser(@Valid @RequestBody User user, BindingResult bindingResult){
-  //   if (bindingResult.hasErrors()){
-  //     return ResponseEntity.badRequest().body("No se ha podido crear el usuario");
-  //   }
-  //   userService.createUser(user);
-  //   return ResponseEntity.ok("El usuario ha sido creado con éxito");
-  // }
 
   @PostMapping
   public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
