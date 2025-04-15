@@ -122,8 +122,4 @@ public class Article {
         return id.equals(article.id);
     }
 
-/*      @Override
-     public int hashCode() {
-         return id.hashCode();
-     } */
 }
