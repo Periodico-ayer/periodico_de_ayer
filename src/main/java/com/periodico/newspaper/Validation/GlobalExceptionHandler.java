@@ -1,4 +1,4 @@
-package com.periodico.newspaper.controller;
+package com.periodico.newspaper.Validation;
 
 import java.util.HashMap;
 import java.util.Map;
