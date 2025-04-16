@@ -8,7 +8,6 @@ import jakarta.validation.Valid;
 import java.util.List;
 
 
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -49,12 +48,7 @@ public class ArticleController {
 
 
 @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteArticle(@PathVariable int id) {
-        try {
-            articleService.deleteArticle(id);
-            return ResponseEntity.ok("Artículo eliminado correctamente");
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        }
+    public ResponseEntity<Object> deleteArticle(@PathVariable Integer id) {
+       return this.articleService.deleteArticle(id);
     }
 }

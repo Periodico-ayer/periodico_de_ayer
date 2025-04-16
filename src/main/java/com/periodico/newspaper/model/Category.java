@@ -56,11 +56,10 @@ public class Category {
 
   @OneToMany(
     mappedBy = "category", 
-    cascade = CascadeType.ALL, 
-    fetch = FetchType.EAGER
+    cascade = CascadeType.ALL,
+    orphanRemoval = true
     )
    private List<Article> articles;
-   
 
   @Override
   public boolean equals(Object o) {
@@ -69,6 +68,7 @@ public class Category {
       Category category = (Category) o;
       return id.equals(category.id);
   }
+
 
 
 }

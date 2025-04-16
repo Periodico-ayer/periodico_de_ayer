@@ -75,7 +75,7 @@ public class User {
     @OneToMany(
         mappedBy = "user",
         cascade = CascadeType.ALL,
-        fetch = FetchType.EAGER
+        orphanRemoval = true
     )
     private List<Article> articles;
 
@@ -87,6 +87,7 @@ public class User {
         return id.equals(user.id);
     }
 
+    
 
  }
 
