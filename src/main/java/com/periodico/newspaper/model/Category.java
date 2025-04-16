@@ -5,7 +5,6 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -17,8 +16,7 @@ import jakarta.persistence.Table;
 @Table(name = "categories")
 public class Category {
 
-  @Id
-
+@Id
 @SequenceGenerator(
   name = "category_id_sequence",
   sequenceName = "category_id_sequence",
@@ -56,11 +54,10 @@ public class Category {
 
   @OneToMany(
     mappedBy = "category", 
-    cascade = CascadeType.ALL, 
-    fetch = FetchType.EAGER
+    cascade = CascadeType.ALL,
+    orphanRemoval = true
     )
    private List<Article> articles;
-   
 
   @Override
   public boolean equals(Object o) {
@@ -69,6 +66,7 @@ public class Category {
       Category category = (Category) o;
       return id.equals(category.id);
   }
+
 
 
 }
