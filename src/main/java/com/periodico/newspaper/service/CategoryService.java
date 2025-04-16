@@ -20,8 +20,7 @@ public class CategoryService {
 
     
     public ResponseEntity<Object> createCategory(Category category) {
-        categoryRepository.save(category);
-        return new ResponseEntity<>(category, HttpStatus.CREATED);
+        return new ResponseEntity<>(categoryRepository.save(category), HttpStatus.CREATED);
     }
     
 }
