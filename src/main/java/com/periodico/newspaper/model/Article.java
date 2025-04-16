@@ -21,14 +21,14 @@ public class Article {
     @Id
 
     @SequenceGenerator(
-        name="user_id_sequence",
-        sequenceName = "user_id_sequence",
+        name="article_id_sequence",
+        sequenceName = "article_id_sequence",
         allocationSize = 1,
         initialValue = 1
     )
     @GeneratedValue(
         strategy = GenerationType.SEQUENCE,
-        generator = "user_id_sequence"
+        generator = "article_id_sequence"
     )
 
     private Integer id;
@@ -44,11 +44,11 @@ public class Article {
  
     
     @ManyToOne 
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
     @ManyToOne 
-    @JoinColumn(name = "category_id")
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;  
 
     public Article() {
