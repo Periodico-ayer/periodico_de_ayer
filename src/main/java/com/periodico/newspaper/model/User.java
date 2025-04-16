@@ -6,19 +6,21 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table( name = "users")
 public class User {
     @Id
-
     @SequenceGenerator(
         name="user_id_sequence",
         sequenceName = "user_id_sequence",
@@ -29,13 +31,21 @@ public class User {
         strategy = GenerationType.SEQUENCE,
         generator = "user_id_sequence"
     )
-
     private Integer id;
     @Column
+    @NotNull(message="El campo del nombre no puede estar vacío")
+    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "No está permitido el uso de caracteres especiales")
+    @Size(max=20, message = "Máximo de 20 caracteres permitidos en este campo")
     private String name;
     @Column
+    @NotNull(message ="El campo del apellido no puede estar vacio")
+    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "No está permitido el uso de caracteres especiales")
+    @Size(max =20, message = "Máximo de 20 caracteres permitidos en este campo")
     private String lastName;
     @Column
+    @Email(message="Por favor, ingrese un formato válido de email")
+    @NotNull(message="El campo del correo no puede estar vacio")
+    @Size(max =50, message = "Máximo de 50 caracteres permitidos en este campo")
     private String email;
 
         public User(){}

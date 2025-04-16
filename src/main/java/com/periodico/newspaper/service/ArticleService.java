@@ -32,27 +32,38 @@ public class ArticleService {
 
     public ResponseEntity<Object> getArticleById(Integer id) {
         Optional<Article> articleOptional = articleRepository.findById(id);
+        if (!articleOptional.isPresent()) {
+            return ResponseEntity.notFound().build();
+        }
+        Article article = articleOptional.get();
+        return ResponseEntity.ok(article);
+
+    }
+
+    public ResponseEntity<Object> updateArticle(Integer id, Article updateArticle) {
+        Optional<Article> articleOptional = articleRepository.findById(id);
 
         if (!articleOptional.isPresent()) {
             return ResponseEntity.notFound().build();
         }
+        Article existingArticle = articleOptional.get();
 
-        Article article = articleOptional.get();
-
-        return ResponseEntity.ok(article);
-
+        existingArticle.setTitle(updateArticle.getTitle());
+        existingArticle.setContent(updateArticle.getContent());
+        articleRepository.save(existingArticle);
+        return ResponseEntity.ok(existingArticle);
     }
 
     @Transactional(propagation = Propagation.REQUIRES_NEW)
     public ResponseEntity<Object> deleteArticle(Integer id) {
         Optional<Article> articleOptional = articleRepository.findById(id);
-    
+
         if (!articleOptional.isPresent()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
-    
+
         Article article = articleOptional.get();
-    
+
         articleRepository.deleteById(article.getId());
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }

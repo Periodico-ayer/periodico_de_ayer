@@ -22,7 +22,9 @@ public class UserController {
   }
 
   @PostMapping
-  public ResponseEntity<Object> createUser(@Valid @RequestBody User user){
+  public ResponseEntity<Object> createUser(@Valid @RequestBody User user) {
     return userService.createUser(user);
   }
+  
 }
+
