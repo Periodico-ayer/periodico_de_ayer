@@ -11,22 +11,38 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.periodico.newspaper.model.Article;
+import com.periodico.newspaper.model.User;
 import com.periodico.newspaper.repository.ArticleRepository;
+import com.periodico.newspaper.repository.UserRepository;
 
 @Service
 public class ArticleService {
 
-    private final ArticleRepository articleRepository;
+  private final ArticleRepository articleRepository;
+  private final UserRepository userRepository;
 
-    public ArticleService(ArticleRepository articleRepository) {
-        this.articleRepository = articleRepository;
-    }
+  public ArticleService(ArticleRepository articleRepository, UserRepository userRepository) {
+    this.articleRepository = articleRepository;
+    this.userRepository = userRepository;
+  }
+ 
+   public ResponseEntity<Object> createArticle(Integer userId, Article article){
+   Optional<User> userOptional = userRepository.findById(userId);
 
-    public ResponseEntity<Object> createArticle(Article article) {
-        return new ResponseEntity<>(articleRepository.save(article), HttpStatus.CREATED);
-    }
+   if (!userOptional.isPresent()) {
+    return ResponseEntity.notFound().build();
 
-    public List<Article> getAllArticles() {
+   }
+
+   article.setUser(userOptional.get());
+   return new ResponseEntity<>(articleRepository.save(article), HttpStatus.CREATED);
+
+
+   }
+
+    
+
+  public List<Article> getAllArticles() {
         return this.articleRepository.findAll();
     }
 
