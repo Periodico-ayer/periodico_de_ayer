@@ -15,6 +15,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -28,12 +29,14 @@ public class Article {
 
     @Column
     @NotBlank(message = "[ERROR!] El campo de título no puede estar vacio y tampoco tener espacios")
+    @Pattern(regexp = "^[^\\/*<>|]+$", message = "[ERROR!] No está permitido el uso de caracteres especiales")
     @Size(max = 255, message = "[ERROR!] Máximo de 255 caracteres permitidos en este campo")
     private String title;
 
     @Column
     @NotBlank(message = "[ERROR!] El campo de contenido no puede estar vacio y tampoco tener espacios")
     @Size(min = 50, max = 2000, message = "[ERROR!] Mínimo de 50 y máximo de 2000 caracteres permitidos en este campo")
+    @Pattern(regexp = "^[^\\/*<>|]+$", message = "[ERROR!] No está permitido el uso de caracteres especiales")
     private String content;
 
     @CreationTimestamp
