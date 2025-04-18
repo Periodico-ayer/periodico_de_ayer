@@ -20,16 +20,8 @@ public class Article {
 
     @Id
 
-    @SequenceGenerator(
-        name="article_id_sequence",
-        sequenceName = "article_id_sequence",
-        allocationSize = 1,
-        initialValue = 1
-    )
-    @GeneratedValue(
-        strategy = GenerationType.SEQUENCE,
-        generator = "article_id_sequence"
-    )
+    @SequenceGenerator(name = "article_id_sequence", sequenceName = "article_id_sequence", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "article_id_sequence")
 
     private Integer id;
     private String title;
@@ -40,29 +32,26 @@ public class Article {
 
     @UpdateTimestamp
     private LocalDateTime updated_on;
-   
- 
-    
-    @ManyToOne 
+
+    @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne 
+    @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
-    private Category category;  
+    private Category category;
 
     public Article() {
     }
 
-    
-     public Integer getId() {
-     return this.id;
-     }
-     
-     public void setId(Integer id) {
-     this.id = id;
-     }
-     
+    public Integer getId() {
+        return this.id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getTitle() {
         return this.title;
     }
@@ -103,14 +92,13 @@ public class Article {
         this.user = user;
     }
 
- public Category getCategory() {
-       return this.category;
-   }
-  public void setCategory(Category category) {
+    public Category getCategory() {
+        return this.category;
+    }
+
+    public void setCategory(Category category) {
         this.category = category;
-  }
-
-
+    }
 
     @Override
     public boolean equals(Object o) {

@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.periodico.newspaper.model.Category;
 import com.periodico.newspaper.repository.CategoryRepository;
 
-
 @Service
 
 public class CategoryService {
@@ -18,9 +17,8 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
 
-    
     public ResponseEntity<Object> createCategory(Category category) {
         return new ResponseEntity<>(categoryRepository.save(category), HttpStatus.CREATED);
     }
-    
+
 }

@@ -18,31 +18,28 @@ import com.periodico.newspaper.repository.UserRepository;
 @Service
 public class ArticleService {
 
-  private final ArticleRepository articleRepository;
-  private final UserRepository userRepository;
+    private final ArticleRepository articleRepository;
+    private final UserRepository userRepository;
 
-  public ArticleService(ArticleRepository articleRepository, UserRepository userRepository) {
-    this.articleRepository = articleRepository;
-    this.userRepository = userRepository;
-  }
- 
-   public ResponseEntity<Object> createArticle(Integer userId, Article article){
-   Optional<User> userOptional = userRepository.findById(userId);
+    public ArticleService(ArticleRepository articleRepository, UserRepository userRepository) {
+        this.articleRepository = articleRepository;
+        this.userRepository = userRepository;
+    }
 
-   if (!userOptional.isPresent()) {
-    return ResponseEntity.notFound().build();
+    public ResponseEntity<Object> createArticle(Integer userId, Article article) {
+        Optional<User> userOptional = userRepository.findById(userId);
 
-   }
+        if (!userOptional.isPresent()) {
+            return ResponseEntity.notFound().build();
 
-   article.setUser(userOptional.get());
-   return new ResponseEntity<>(articleRepository.save(article), HttpStatus.CREATED);
+        }
 
+        article.setUser(userOptional.get());
+        return new ResponseEntity<>(articleRepository.save(article), HttpStatus.CREATED);
 
-   }
+    }
 
-    
-
-  public List<Article> getAllArticles() {
+    public List<Article> getAllArticles() {
         return this.articleRepository.findAll();
     }
 
