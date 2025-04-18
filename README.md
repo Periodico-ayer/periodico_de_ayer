@@ -27,7 +27,7 @@ Las siguientes tecnologías y herramientas han sido utilizadas en este proyecto:
 - **Control de Versiones:** Git - GitHub
 - **Pruebas de API:** Postman
 
-## ✅ Requisitos Funcionales
+## ✅ Funcionalidades
 
 La API permite:
 
