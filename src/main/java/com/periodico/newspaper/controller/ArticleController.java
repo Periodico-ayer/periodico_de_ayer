@@ -28,7 +28,8 @@ public class ArticleController {
 
     @PostMapping("/user/{userId}")
     public ResponseEntity<Object> createArticle(@PathVariable Integer userId, @RequestBody Article article) {
-        return articleService.createArticle(userId, article);
+        Integer categoryId = article.getCategory().getId();
+        return articleService.createArticle(userId, article, categoryId);
     }
 
     @GetMapping("/{id}")
