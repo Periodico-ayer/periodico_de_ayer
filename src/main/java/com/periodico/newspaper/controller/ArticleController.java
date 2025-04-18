@@ -4,6 +4,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.periodico.newspaper.model.Article;
 import com.periodico.newspaper.service.ArticleService;
 
+import jakarta.validation.Valid;
+
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
@@ -27,7 +29,7 @@ public class ArticleController {
     }
 
     @PostMapping("/user/{userId}")
-    public ResponseEntity<Object> createArticle(@PathVariable Integer userId, @RequestBody Article article) {
+    public ResponseEntity<Object> createArticle(@PathVariable Integer userId, @Valid @RequestBody Article article) {
         Integer categoryId = article.getCategory().getId();
         return articleService.createArticle(userId, article, categoryId);
     }
