@@ -36,7 +36,7 @@ public class User {
     @Size(max = 20, message = "[ERROR!] Máximo de 20 caracteres permitidos en este campo")
     private String lastName;
 
-    @Column(unique = true)
+    @Column
     @Email(message = "[ERROR!] Por favor, ingrese un formato válido de email")
     @NotBlank(message = "[ERROR!] El campo de email no puede estar vacio y tampoco tener espacios")
     @Size(max = 50, message = "[ERROR!] Máximo de 50 caracteres permitidos en este campo")

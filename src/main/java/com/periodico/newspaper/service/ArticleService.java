@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.periodico.newspaper.Validation.ContentAlreadyExistsException;
+import com.periodico.newspaper.Validation.TitleAlreadyExistsException;
 import com.periodico.newspaper.model.Article;
 import com.periodico.newspaper.model.User;
 import com.periodico.newspaper.model.Category;
@@ -38,6 +40,12 @@ public class ArticleService {
         }
         if (!categoryOptional.isPresent()) {
             return ResponseEntity.notFound().build();
+        }
+        if (article.getTitle() != null && articleRepository.findByTitle(article.getTitle()).isPresent()) {
+            throw new TitleAlreadyExistsException("[ERROR]: Ya existe un artículo con el mismo título en la base de datos");
+        }
+        if (article.getContent() != null && articleRepository.findByContent(article.getContent()).isPresent()) {
+            throw new ContentAlreadyExistsException("[ERROR]: Ya existe un artículo con el mismo contenido en la base de datos");
         }
 
         article.setUser(userOptional.get());

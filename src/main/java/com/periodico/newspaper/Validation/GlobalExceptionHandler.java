@@ -30,4 +30,14 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
+    @ExceptionHandler(ContentAlreadyExistsException.class)
+    public ResponseEntity<String> handleContentAlreadyExistsException(Exception ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(TitleAlreadyExistsException.class)
+    public ResponseEntity<String> handleTitleAlreadyExistsException(Exception ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
 }
