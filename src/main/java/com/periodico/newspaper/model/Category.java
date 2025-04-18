@@ -26,9 +26,9 @@ public class Category {
   private Integer id;
 
   @Column(unique = true)
-  @NotBlank(message = "[ERROR!]El campo de categoria no puede estar vacio y tampoco tener espacios")
-  @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "[ERROR!]No está permitido el uso de caracteres especiales")
-  @Size(max = 20, message = "[ERROR!]Máximo de 20 caracteres permitidos en este campo")
+  @NotBlank(message = "[ERROR!] El campo de categoria no puede estar vacio y tampoco tener espacios")
+  @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "[ERROR!] No está permitido el uso de caracteres especiales")
+  @Size(max = 20, message = "[ERROR!] Máximo de 20 caracteres permitidos en este campo")
   private String category;
 
   public Category() {

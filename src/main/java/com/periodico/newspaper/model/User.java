@@ -12,7 +12,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 
@@ -25,21 +25,21 @@ public class User {
     private Integer id;
 
     @Column
-    @NotNull(message = "ERROR: El campo del nombre no puede estar vacío")
-    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "ERROR: No está permitido el uso de caracteres especiales")
-    @Size(max = 20, message = "ERROR: Máximo de 20 caracteres permitidos en este campo")
+    @NotBlank(message = "[ERROR!] El campo de nombre no puede estar vacio y tampoco tener espacios")
+    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "[ERROR!] No está permitido el uso de caracteres especiales")
+    @Size(max = 20, message = "[ERROR!] Máximo de 20 caracteres permitidos en este campo")
     private String name;
 
     @Column
-    @NotNull(message = "ERROR: El campo del apellido no puede estar vacio")
-    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "ERROR: No está permitido el uso de caracteres especiales")
-    @Size(max = 20, message = "ERROR: Máximo de 20 caracteres permitidos en este campo")
+    @NotBlank(message = "[ERROR!] El campo de apellido no puede estar vacio y tampoco tener espacios")
+    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "[ERROR!] No está permitido el uso de caracteres especiales")
+    @Size(max = 20, message = "[ERROR!] Máximo de 20 caracteres permitidos en este campo")
     private String lastName;
 
     @Column(unique = true)
-    @Email(message = "ERROR: Por favor, ingrese un formato válido de email")
-    @NotNull(message = "ERROR: El campo del correo no puede estar vacio")
-    @Size(max = 50, message = "ERROR: Máximo de 50 caracteres permitidos en este campo")
+    @Email(message = "[ERROR!] Por favor, ingrese un formato válido de email")
+    @NotBlank(message = "[ERROR!] El campo de email no puede estar vacio y tampoco tener espacios")
+    @Size(max = 50, message = "[ERROR!] Máximo de 50 caracteres permitidos en este campo")
     private String email;
 
     public User() {

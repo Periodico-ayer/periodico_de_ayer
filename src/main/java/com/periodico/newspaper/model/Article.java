@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,6 +14,8 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "articles")
@@ -22,11 +25,18 @@ public class Article {
 
     @SequenceGenerator(name = "article_id_sequence", sequenceName = "article_id_sequence", allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "article_id_sequence")
-
     private Integer id;
+
+    @Column
+    @NotBlank(message = "[ERROR!] El campo de título no puede estar vacio y tampoco tener espacios")
+    @Size(max = 255, message = "[ERROR!] Máximo de 255 caracteres permitidos en este campo")
     private String title;
+
+    @Column
+    @NotBlank(message = "[ERROR!] El campo de contenido no puede estar vacio y tampoco tener espacios")
+    @Size(min = 50, max = 2000, message = "[ERROR!] Mínimo de 50 y máximo de 2000 caracteres permitidos en este campo")
     private String content;
-    // private String date;
+
     @CreationTimestamp
     private LocalDateTime created_on;
 
