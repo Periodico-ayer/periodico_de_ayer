@@ -25,21 +25,21 @@ public class User {
     private Integer id;
 
     @Column
-    @NotNull(message = "El campo del nombre no puede estar vacío")
-    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "No está permitido el uso de caracteres especiales")
-    @Size(max = 20, message = "Máximo de 20 caracteres permitidos en este campo")
+    @NotNull(message = "ERROR: El campo del nombre no puede estar vacío")
+    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "ERROR: No está permitido el uso de caracteres especiales")
+    @Size(max = 20, message = "ERROR: Máximo de 20 caracteres permitidos en este campo")
     private String name;
 
     @Column
-    @NotNull(message = "El campo del apellido no puede estar vacio")
-    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "No está permitido el uso de caracteres especiales")
-    @Size(max = 20, message = "Máximo de 20 caracteres permitidos en este campo")
+    @NotNull(message = "ERROR: El campo del apellido no puede estar vacio")
+    @Pattern(regexp = "^[^\\/:*?\\\"<>|]+$", message = "ERROR: No está permitido el uso de caracteres especiales")
+    @Size(max = 20, message = "ERROR: Máximo de 20 caracteres permitidos en este campo")
     private String lastName;
 
     @Column(unique = true)
-    @Email(message = "Por favor, ingrese un formato válido de email")
-    @NotNull(message = "El campo del correo no puede estar vacio")
-    @Size(max = 50, message = "Máximo de 50 caracteres permitidos en este campo")
+    @Email(message = "ERROR: Por favor, ingrese un formato válido de email")
+    @NotNull(message = "ERROR: El campo del correo no puede estar vacio")
+    @Size(max = 50, message = "ERROR: Máximo de 50 caracteres permitidos en este campo")
     private String email;
 
     public User() {
