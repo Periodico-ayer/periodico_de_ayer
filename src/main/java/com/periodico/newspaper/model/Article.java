@@ -22,7 +22,6 @@ import jakarta.validation.constraints.Size;
 public class Article {
 
     @Id
-
     @SequenceGenerator(name = "article_id_sequence", sequenceName = "article_id_sequence", allocationSize = 1, initialValue = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "article_id_sequence")
     private Integer id;
