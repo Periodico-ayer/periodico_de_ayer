@@ -13,6 +13,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 import com.periodico.newspaper.model.Article;
 import com.periodico.newspaper.model.Category;
@@ -77,4 +78,21 @@ public class ArticleServiceTest {
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.CREATED);
         assertThat(((Article) response.getBody()).getUser().getName()).isEqualTo("Carla");
     }
+
+    @SuppressWarnings("null")
+    @Test
+    void whenGetArticleById_thenReturnArticle(){
+
+        Article article = new Article ();
+        article.setId(1);
+        article.setTitle("Testing");
+
+        when(articleRepository.findById(1)).thenReturn(Optional.of(article));
+
+        ResponseEntity<Object> response = articleService.getArticleById(1);
+        Article found = (Article) response.getBody();
+
+        assertThat(found.getTitle()).isEqualTo("Testing");
+    }
+
 }
