@@ -54,7 +54,7 @@ public class ArticleServiceTest {
 
         Category category = new Category();
         category.setId(categoryId);
-        category.setCategory("Tecnología");
+        category.setCategory("Technology");
 
 
 
