@@ -21,6 +21,7 @@ public class UserServiceTest {
     @InjectMocks
     private UserService userService;
 
+    @SuppressWarnings("null")
     @Test
     public void whenCreateUser_shouldReturnCreatedResponse() {
 
