@@ -1,4 +1,4 @@
-package com.periodico.newspaper.ServiceTest;
+package com.periodico.newspaper.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -21,7 +21,6 @@ import com.periodico.newspaper.model.User;
 import com.periodico.newspaper.repository.ArticleRepository;
 import com.periodico.newspaper.repository.CategoryRepository;
 import com.periodico.newspaper.repository.UserRepository;
-import com.periodico.newspaper.service.ArticleService;
 
 
 @ExtendWith(MockitoExtension.class)

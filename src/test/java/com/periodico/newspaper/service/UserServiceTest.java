@@ -1,7 +1,6 @@
-package com.periodico.newspaper.ServiceTest;
+package com.periodico.newspaper.service;
 import com.periodico.newspaper.model.User;
 import com.periodico.newspaper.repository.UserRepository;
-import com.periodico.newspaper.service.UserService;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.*;
 import org.junit.jupiter.api.Test;

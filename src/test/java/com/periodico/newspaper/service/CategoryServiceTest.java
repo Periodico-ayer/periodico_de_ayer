@@ -1,4 +1,4 @@
-package com.periodico.newspaper.ServiceTest;
+package com.periodico.newspaper.service;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
@@ -13,7 +13,6 @@ import org.springframework.http.ResponseEntity;
 
 import com.periodico.newspaper.model.Category;
 import com.periodico.newspaper.repository.CategoryRepository;
-import com.periodico.newspaper.service.CategoryService;
 
 @ExtendWith(MockitoExtension.class)
 public class CategoryServiceTest {
