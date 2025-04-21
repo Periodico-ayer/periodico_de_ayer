@@ -9,4 +9,5 @@ import com.periodico.newspaper.model.User;
 public interface UserRepository extends JpaRepository<User, Integer> {
 
 User findByEmail(String email);
+
 }

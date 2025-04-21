@@ -27,7 +27,8 @@ public class UserServiceTest {
 
         User user = new User();
         user.setName("Testing");
-        user.setEmail("testing@email.com");
+        user.setLastName("Mockito");
+        user.setEmail("testing@gmail.com");
 
         when(userRepository.findByEmail(user.getEmail())).thenReturn(null);
 
@@ -41,6 +42,9 @@ public class UserServiceTest {
         assertThat(body).isNotNull(); 
         User createdUser = (User) body; 
         assertThat(createdUser.getName()).isEqualTo("Testing");
+        assertThat(createdUser.getLastName()).isEqualTo("Mockito");
+        assertThat(createdUser.getEmail()).isEqualTo("testing@gmail.com");
+
 
         verify(userRepository).save(user);
     }
