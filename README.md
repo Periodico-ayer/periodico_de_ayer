@@ -109,21 +109,20 @@ El proyecto utiliza JPA/Hibernate para la creación automática de las tablas en
 
 ### Diagrama de la base de datos
 
-## License
-This project is under the [Feminist Peer Production License 2F2](https://labekka.red/licencia-f2f/).  
+## Licencia
+Este proyecto está bajo la [Licencia de Producción entre Pares Feminista 2F2](https://labekka.red/licencia-f2f/).  
 <br>
 <img src="https://github.com/user-attachments/assets/90acbc07-7ba9-45e1-867b-6d284f4e6288" alt="f2f-license" width="150">
 <br>
-You can use, modify, and share it freely. 🎉
+Puedes usarlo, modificarlo y compartirlo libremente. 🎉
 
-Made with ❤️ by Alba Riera, Larissa Saud, Priscila Guillen, Maria Bongoll and Paola Morales.
+Hecho con ❤️ por Alba Riera, Larissa Saud, Maria Bongoll, Marta Ibarra y Priscila Guillen.
 
-## Made with Love
+## Hecho con amor
 
-This project is crafted with love for books and technology, aiming to bring the joy of reading and efficient management to everyone. Whether you're a developer or a book enthusiast, we hope you find this tool helpful and inspiring.
+Este proyecto está elaborado con amor por los libros y la tecnología, con el objetivo de llevar la alegría de la lectura y una gestión eficiente a todas las personas. Ya seas desarrollador/a o entusiasta de los libros, esperamos que encuentres esta herramienta útil e inspiradora.
 
-
-## Contacts
+## Contactos
 
 <table style="border-collapse: collapse; border: none;">
   <tr>
