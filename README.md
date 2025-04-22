@@ -21,11 +21,16 @@ Este proyecto desarrolla las siguientes competencias técnicas:
 Las siguientes tecnologías y herramientas han sido utilizadas en este proyecto:
 
 - **Lenguaje de Programación:** Java 21
-- **Framework Backend:** Spring Boot
-- **Base de Datos:** PostgreSQL
+- **Framework Backend:** Spring Boot 3.4.4
+- **Base de Datos:** PostgreSQL 42.7.5
+- **Base de Datos (tests):** H2 2.3
 - **Gestión de Proyectos:** Trello
 - **Control de Versiones:** Git - GitHub
-- **Pruebas de API:** Postman
+- **Pruebas de API:** Postman 11.41
+- **Testing:**
+  - spring-boot-starter-test 3.4.4
+  - Mockito JUnit 5.2
+- **Configuración:** dotenv-java 3.0
 
 ## ✅ Funcionalidades
 
@@ -43,9 +48,114 @@ La API permite:
 - **Validación del Contenido:** El contenido del artículo no debe estar vacío, debe tener al menos 50 caracteres y un máximo de 2000 caracteres.
 - **Eliminación en Cascada:** Si un usuario es eliminado, todos sus artículos asociados también deben ser eliminados automáticamente de la base de datos.
 
-## ✨ Autoras
+## 🚀 Cómo iniciar el proyecto
 
-- Alba Riera
-- Larissa Santos
-- Marta Ibarra
-- Priscila Guillén
+### Requisitos previos
+- Java 21 instalado
+- PostgreSQL instalado y en ejecución
+- Maven o Gradle (según la configuración del proyecto)
+
+### Pasos para iniciar el proyecto
+
+1. **Clonar el repositorio**
+   ```bash
+   git clone https://github.com/tu-usuario/periodico-de-ayer-api.git
+   cd periodico-de-ayer-api
+   ```
+
+2. **Configurar la base de datos**
+   - Crear una base de datos en PostgreSQL:
+   ```sql
+   CREATE DATABASE periodico_de_ayer;
+   ```
+
+3. **Configurar las propiedades de conexión**
+   - Editar el archivo `src/main/resources/application.properties` con los datos de tu conexión:
+   ```properties
+   spring.datasource.url=jdbc:postgresql://localhost:5432/periodico_de_ayeratasource.url=jdbc:postgresql://localhost:5432/periodico_de_ayer
+   spring.datasource.username=tu_usuario
+   spring.datasource.password=tu_contraseña
+   spring.jpa.hibernate.ddl-auto=update
+   spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.Postgre
+   spring.datasource.username=tu_usuario
+   spring.datasource.password=tu_contraseña
+   spring.jpa.hibernate.ddl-auto=update
+   spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+   ```
+
+4. **Compilar y ejecutar el proyecto**
+   - Con Maven:
+   ```bash
+   mvn clean install
+   mvn spring-boot:run
+   ```
+   - Con Gradle:
+   ```bash
+   gradle build
+   gradle bootRun
+   ```
+
+5. **Verificar la instalación**
+   - La API estará disponible en: `http://localhost:8080`
+   - Puedes probar los endpoints con Postman o cualquier cliente HTTP
+
+## 📊 Conexión con la base de datos
+
+### Estructura de la base de datos
+El proyecto utiliza JPA/Hibernate para la creación automática de las tablas en la base de datos. Las principales entidades son:
+
+- **Usuario**: Almacena información de los usuarios que crean artículos
+- **Artículo**: Contiene los artículos del periódico con sus propiedades
+
+### Diagrama de la base de datos
+
+## License
+This project is under the [Feminist Peer Production License 2F2](https://labekka.red/licencia-f2f/).  
+<br>
+<img src="https://github.com/user-attachments/assets/90acbc07-7ba9-45e1-867b-6d284f4e6288" alt="f2f-license" width="150">
+<br>
+You can use, modify, and share it freely. 🎉
+
+Made with ❤️ by Alba Riera, Larissa Saud, Priscila Guillen, Maria Bongoll and Paola Morales.
+
+## Made with Love
+
+This project is crafted with love for books and technology, aiming to bring the joy of reading and efficient management to everyone. Whether you're a developer or a book enthusiast, we hope you find this tool helpful and inspiring.
+
+
+## Contacts
+
+<table style="border-collapse: collapse; border: none;">
+  <tr>
+  <td align="center" style="border: none;">
+      <br><b>Alba Riera</b>
+      <br>
+      <a href="https://www.linkedin.com/in/albamar%C3%ADarieravelazquez/">LinkedIn</a> |
+      <a href="https://github.com/rieradipe")">GitHub</a>
+    </td>
+    <td align="center" style="border: none;">
+      <br><b>Larissa Saud</b>
+      <br>
+      <a href="https://www.linkedin.com/in/larissasaud/">LinkedIn</a> |
+      <a href="https://github.com/saudlari/">GitHub</a>
+    <td align="center" style="border: none;">
+      <br><b>Maria Bongoll</b>
+      <br>
+      <a href="https://www.linkedin.com/in/mariabongoll">LinkedIn</a> |
+      <a href="https://github.com/Femcom-Mari">GitHub</a>
+    </td>
+    <td align="center" style="border: none;">
+      <br><b>Marta Ibarra</b>
+      <br>
+      <a href="https://www.linkedin.com/in/marta-ibarra-cumbrero/>LinkedIn</a> |
+      <a href="https://github.com/Marpro24">GitHub</a>
+    </td>    </td>
+      <td align="center" style="border: none;">
+      <br><b>Priscila Guillen de Oliveira</b>
+      <br>
+      <a href="https://www.linkedin.com/in/priscilaguillen/">LinkedIn</a> |
+      <a href="https://github.com/pgoliv-code">GitHub</a>
+    </td>
+  </tr>
+</table>
+
