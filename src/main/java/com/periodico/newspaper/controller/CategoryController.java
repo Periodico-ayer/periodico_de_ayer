@@ -1,8 +1,6 @@
 package com.periodico.newspaper.controller;
-
 import com.periodico.newspaper.model.Category;
 import com.periodico.newspaper.service.CategoryService;
-
 import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
