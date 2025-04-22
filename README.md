@@ -147,7 +147,7 @@ This project is crafted with love for books and technology, aiming to bring the 
     <td align="center" style="border: none;">
       <br><b>Marta Ibarra</b>
       <br>
-      <a href="https://www.linkedin.com/in/marta-ibarra-cumbrero/>LinkedIn</a> |
+      <a href="https://www.linkedin.com/in/marta-ibarra-cumbrero"/>LinkedIn</a> |
       <a href="https://github.com/Marpro24">GitHub</a>
     </td>    </td>
       <td align="center" style="border: none;">
